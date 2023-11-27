@@ -7,7 +7,7 @@ const port = 8000;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://worldwidetours.co", "*"],
+    origin: ["https://worldwidetours.co", "http://localhost:3000" , "*"],
     credentials: true,
   })
 );
@@ -25,8 +25,6 @@ app.post('/api/v1/contact', async (req, res) => {
     res.status(500).json({ error: 'Could not create contact' });
   }
 });
-
-
 app.post('/api/v1/trip', async (req, res) => {
   try {
     const tripData = req.body; 
@@ -37,10 +35,6 @@ app.post('/api/v1/trip', async (req, res) => {
     res.status(500).json({ error: 'Could not create trip' });
   }
 });
-
-
-
-
 // Start the server
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
